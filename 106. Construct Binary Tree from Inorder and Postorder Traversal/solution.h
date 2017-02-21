@@ -21,29 +21,30 @@ private:
     int ind = 0;
 
 public:
-    void build(TreeNode* root, vector<int>& preorder, vector<int>& inorder, int l, int r) {
-        root->val = preorder[ind];
-        ind ++;    
+    void build(TreeNode* root, vector<int>& postorder, vector<int>& inorder, int l, int r) {
+        root->val = postorder[ind];
+        ind --;    
         
         int pos = 0;
         for(pos = l; pos <= r; pos++) {
             if (inorder[pos] == root->val) break;
         }
 
-        if(l <= pos-1) {
-            root->left = new TreeNode(0);
-            build(root->left, preorder, inorder, l, pos-1);    
-        } else {
-            root->left = NULL;
-        }
+        
 
         if(pos+1 <= r) {
             root->right = new TreeNode(0);
-            build(root->right, preorder, inorder, pos+1, r);
+            build(root->right, postorder, inorder, pos+1, r);
         } else {
             root->right = NULL;
         }
-
+        
+        if(l <= pos-1) {
+            root->left = new TreeNode(0);
+            build(root->left, postorder, inorder, l, pos-1);    
+        } else {
+            root->left = NULL;
+        }
     }
     
     void preorderTravel(TreeNode* root) {
@@ -62,10 +63,11 @@ public:
         inorderTravel(root->right);
     }
 
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        if (preorder.size() < 1) return NULL;
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        if (postorder.size() < 1) return NULL;
+        ind = postorder.size() - 1;
         TreeNode* root = new TreeNode(0);
-        build(root, preorder, inorder, 0, inorder.size()-1);
+        build(root, postorder, inorder, 0, inorder.size()-1);
         return root;
     }
 };
