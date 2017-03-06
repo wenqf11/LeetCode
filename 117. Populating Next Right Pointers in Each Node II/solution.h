@@ -1,8 +1,8 @@
 #pragma once
-#include<vector>
-#include<string>
-#include<climits>
-#include<cmath>
+#include <vector>
+#include <string>
+#include <climits>
+#include <cmath>
 using namespace std;
 
 
