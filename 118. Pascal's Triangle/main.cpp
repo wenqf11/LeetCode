@@ -6,7 +6,7 @@
 int main()
 {
 	Solution s;
-	
+    	
 	int nRows = 5;
 	vector<vector<int>> res = s.generate(nRows);
 
