@@ -10,7 +10,7 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) {
         if (prices.size() <= 1) return 0;
-        
+
         vector<int> leftProfit(prices.size(), 0), rightProfit(prices.size(), 0);
         int maxP=0, maxPrice = prices[prices.size()-1], minPrice, res = 0;
         for (int i = prices.size()-1; i >= 0; i--) {
@@ -26,17 +26,6 @@ public:
             maxP = max(maxP, prices[i]-minPrice);
             leftProfit[i] = maxP;
         }
-/*       
-        for(int i = 0; i < prices.size(); i++){
-            cout << leftProfit[i] << " ";
-        }
-        cout << endl;
-
-        for(int i = 0; i < prices.size(); i++){
-            cout << rightProfit[i] << " ";
-        }
-        cout << endl;
-*/
 
 
         for (int i = 0; i < prices.size(); i++) {

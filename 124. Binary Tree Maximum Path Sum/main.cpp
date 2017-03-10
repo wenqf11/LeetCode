@@ -7,8 +7,8 @@ int main()
 {
 	Solution s;
     
-	vector<int> prices = {1, 4, 2};
+	TreeNode* root = new TreeNode(-3);
     
-	cout << s.maxProfit(prices) << endl;
+	cout << s.maxPathSum(root) << endl;
 	return 0;
 }
