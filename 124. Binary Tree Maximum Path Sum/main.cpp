@@ -6,7 +6,7 @@
 int main()
 {
 	Solution s;
-    
+
 	TreeNode* root = new TreeNode(-3);
     
 	cout << s.maxPathSum(root) << endl;
