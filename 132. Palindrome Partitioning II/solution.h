@@ -8,7 +8,6 @@ using namespace std;
 
 class Solution {
 public:
-
 	int minCut(string s) {
 		vector<vector<bool>> isPalindrome(s.size(), vector<bool>(s.size(), 0));
 		vector<int> f(s.size(), 0);
