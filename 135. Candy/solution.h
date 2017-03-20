@@ -14,7 +14,7 @@ private:
 		vector<int> indices(values.size());
 		size_t n(0);
 		generate(begin(indices), end(indices), [&] { return n++; });
-		std::sort(begin(indices), end(indices), [&](int a, int b) { return values[a] < values[b]; });
+		sort(begin(indices), end(indices), [&](int a, int b) { return values[a] < values[b]; });
 		return indices;
 	}
 
