@@ -18,12 +18,11 @@ public:
 		int mid = 0;
 		while (left <= right) {
 			mid = (left + right) / 2;
-			if (nums[mid] > nums[left] && nums[right] <= nums[left]) {
-				left = mid;
-			} else if (nums[mid] < nums[left]) {
-				right = mid;
+            if(right - left <=1) return min(nums[left], nums[right]);
+            if (nums[mid] > nums[left] && nums[mid] > nums[right]) {
+				left = mid + 1;
 			} else {
-				return min(nums[left], nums[right]);
+				right = mid;
 			}
 		}
 		return nums[mid];
