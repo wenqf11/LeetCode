@@ -29,4 +29,5 @@
 *.app
 
 main
+solution
 .DS_Store
