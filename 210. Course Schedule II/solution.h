@@ -14,12 +14,13 @@ using namespace std;
 
 class Solution {
 public:
-	bool canFinish(int numCourses, vector< pair<int, int> >& prerequisites) {
+	vector<int> findOrder(int numCourses, vector< pair<int, int> >& prerequisites) {
 		vector< vector<int> > outPoints(numCourses, vector<int>());
 		vector<int> inDegree(numCourses, 0);
+		vector<int> res;
 		for (int i = 0; i < prerequisites.size(); i++) {
-			outPoints[prerequisites[i].first].push_back(prerequisites[i].second);
-			inDegree[prerequisites[i].second]++;
+			outPoints[prerequisites[i].second].push_back(prerequisites[i].first);
+			inDegree[prerequisites[i].first]++;
 		}
 
 		stack<int> s;
@@ -30,6 +31,7 @@ public:
 		}
 		while (!s.empty()) {
 			int k = s.top();
+			res.push_back(k);
 			s.pop();
 			for (int i = 0; i < outPoints[k].size(); i++) {
 				inDegree[outPoints[k][i]]--;
@@ -40,8 +42,9 @@ public:
 		}
 
 		for (int i = 0; i < numCourses; i++) {
-			if (inDegree[i] != 0) return false;
+			if (inDegree[i] != 0) return vector<int>();
 		}
-		return true;
+
+		return res;
 	}
 };
