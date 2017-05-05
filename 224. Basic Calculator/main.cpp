@@ -2,8 +2,7 @@
 #include "solution.h"
 
 int main() {
-	TreeNode* root = new TreeNode(1);
 	Solution s;
-	s.invertTree(root);
+	cout << s.calculate("10-(12-3)");
 	return 0;
 }
