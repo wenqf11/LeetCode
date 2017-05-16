@@ -12,19 +12,32 @@ using namespace std;
 
 
 class Solution {
-public:
-
-	bool searchMatrix(vector< vector<int> >& matrix, int target) {
-		if (matrix.size() == 0 || matrix[0].size() == 0) return 0;
-		int m = matrix.size(), n = matrix[0].size();
-		if (target < matrix[0][0] || target > matrix[m - 1][n - 1]) return false;
-		int x = m - 1, y = 0;
-		while (true) {
-			if (matrix[x][y] > target) --x;
-			else if (matrix[x][y] < target) ++y;
-			else return true;
-			if (x < 0 || y >= matrix[0].size()) break;
+private:
+	int calculate(int a, int b, char ch) {
+		switch (ch) {
+		case '+': return a + b; break;
+		case '-': return a - b; break;
+		case '*': return a * b; break;
+		default: return 0;
 		}
-		return false;
+	}
+public:
+	vector<int> diffWaysToCompute(string input) {
+		vector<int> res;
+		for (int i = 0; i < input.size(); i++) {
+			if (input[i] == '+' || input[i] == '-' ||  input[i] == '*') {
+				vector<int> left = diffWaysToCompute(input.substr(0, i));
+				vector<int> right = diffWaysToCompute(input.substr(i + 1));
+				for (auto j : left) {
+					for (auto k : right) {
+						res.push_back(calculate(j, k, input[i]));
+					}
+				}
+			}
+		}
+
+		if (res.empty()) res.push_back(atoi(input.c_str()));
+
+		return res;
 	}
 };
