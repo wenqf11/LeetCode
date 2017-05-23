@@ -3,5 +3,5 @@
 
 int main() {
     Solution s;
-    cout << s.numSquares(12) << endl;
+    cout << s.addOperators("123", 6) << endl;
 }
