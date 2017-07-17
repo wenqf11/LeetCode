@@ -4,5 +4,9 @@
 int main() {
     Solution s;
 
-    cout << s.findAnagrams("cbaebabacd", "abc") << endl;
+    vector<int> res = s.findAnagrams("cbaebabacd", "abc");
+    for ( auto r : res) {
+        cout << r << " ";
+    }
+    cout << endl;
 }
