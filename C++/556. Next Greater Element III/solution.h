@@ -29,6 +29,6 @@ public:
         sort(str.begin() + i, str.end());
 
         long long res = stoll(str);
-        return res > INT_MAX ? -1 : res;
+        return res;
     }
 };
