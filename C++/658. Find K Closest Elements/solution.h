@@ -24,7 +24,10 @@ private:
                 return mid;
             }
         }
-        return mid;
+        if (r < 0) return 0;
+        if (l >= arr.size()) return arr.size() - 1;
+        if (abs(arr[r] - target) <= abs(arr[l] - target)) return r;
+        return l;
     }
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
