@@ -3,5 +3,5 @@
 
 int main() {
     Solution s;
-    cout << s.reverseWords("Let's take LeetCode contest") << endl;
+    cout << s.checkRecord("PPALLPL") << endl;
 }

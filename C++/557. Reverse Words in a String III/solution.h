@@ -9,23 +9,16 @@ using namespace std;
 
 class Solution {
 public:
-    string reverseWords(string s) {
-        string t = "";
-        int prev = 0;
+    bool checkRecord(string s) {
+        int A = 0, L = 0;
+
         for (int i = 0; i < s.size(); ++i) {
-            if (s[i] == ' ') {
-                for (int j = i - 1; j >= prev; --j) {
-                    t += s[j];
-                }
-                prev = i + 1;
-                t += ' ';
+            if (s[i] == 'A') {
+                ++A;
+            } else if (i + 1 < s.size() && i + 2 < s.size() && s[i] == 'L' && s[i + 1] == 'L' && s[i + 2] == 'L') {
+                return false;
             }
         }
-        if (prev < s.size()) {
-            for (int j = s.size() - 1; j >= prev; --j) {
-                t += s[j];
-            }
-        }
-        return t;
+        return A < 2;
     }
 };
